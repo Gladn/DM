@@ -1,4 +1,5 @@
-# DM
+# DM(Анализ статистических свойств итеративных блочных шифров при помощи нейронных сетей.)
+Диисертациия: Анализ статистических свойств итеративных блочных шифров при помощи нейронных сетей.
 Созданные модели сверточных нейронных сетей:
 https://drive.google.com/drive/folders/1zq0wA701jcClT0FvKfYU6y6LUWjy5d2-?usp=sharing
 https://drive.google.com/drive/folders/1zq0wA701jcClT0FvKfYU6y6LUWjy5d2-?usp=sharing
