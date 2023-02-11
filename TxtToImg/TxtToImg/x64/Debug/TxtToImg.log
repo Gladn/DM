@@ -1,8 +1,0 @@
-﻿  Source.cpp
-A:\ProjectC\TxtToImg\TxtToImg\Source.cpp(2,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
-A:\ProjectC\TxtToImg\TxtToImg\Source.cpp(130,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-A:\ProjectC\TxtToImg\TxtToImg\Source.cpp(141,7): warning C4101: FileName: неиспользованная локальная переменная
-A:\ProjectC\TxtToImg\TxtToImg\Source.cpp(136,11): warning C4101: s2: неиспользованная локальная переменная
-A:\ProjectC\TxtToImg\TxtToImg\Source.cpp(136,7): warning C4101: s1: неиспользованная локальная переменная
-A:\ProjectC\TxtToImg\TxtToImg\Source.cpp(136,15): warning C4101: s3: неиспользованная локальная переменная
-  TxtToImg.vcxproj -> A:\ProjectC\TxtToImg\x64\Debug\TxtToImg.exe
