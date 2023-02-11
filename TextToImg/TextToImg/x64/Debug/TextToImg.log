@@ -1,0 +1,4 @@
+﻿  TextToImg.cpp
+A:\ProjectC\TextToImg\TextToImg\TextToImg.cpp(2,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+A:\ProjectC\TextToImg\TextToImg\TextToImg.cpp(65,19): warning C4101: rgb: неиспользованная локальная переменная
+  TextToImg.vcxproj -> A:\ProjectC\TextToImg\x64\Debug\TextToImg.exe
