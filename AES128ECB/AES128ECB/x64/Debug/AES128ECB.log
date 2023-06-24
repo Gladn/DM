@@ -1,0 +1,7 @@
+﻿  AES128ECB.cpp
+A:\ProjectC\AES128ECB\AES128ECB\AES128ECB.cpp(415,64): warning C4267: аргумент: преобразование из "size_t" в "unsigned int"; возможна потеря данных
+A:\ProjectC\AES128ECB\AES128ECB\AES128ECB.cpp(434,64): warning C4267: аргумент: преобразование из "size_t" в "unsigned int"; возможна потеря данных
+A:\ProjectC\AES128ECB\AES128ECB\AES128ECB.cpp(454,64): warning C4267: аргумент: преобразование из "size_t" в "unsigned int"; возможна потеря данных
+A:\ProjectC\AES128ECB\AES128ECB\AES128ECB.cpp(522,29): warning C4244: аргумент: преобразование "ULONGLONG" в "unsigned int", возможна потеря данных
+A:\ProjectC\AES128ECB\AES128ECB\AES128ECB.cpp(538,41): warning C4101: decrypted: неиспользованная локальная переменная
+  AES128ECB.vcxproj -> A:\ProjectC\AES128ECB\x64\Debug\AES128ECB.exe
