@@ -33,3 +33,9 @@
 
 ![изображение](https://github.com/Gladn/DM/assets/92585647/1c769ca6-6b74-4779-b8a9-d8e2e8d3cb99)
 
+
+
+
+tensorflow 2.10.1 
+CuDNN 7.6
+CUDA 10.1
