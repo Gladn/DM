@@ -1,0 +1,35 @@
+﻿  Main.cpp
+  Simon.cpp
+A:\ProjectC\Simon\Simon\Simon.cpp(33,57): warning C4244: =: преобразование "const uint16_t" в "uint8_t", возможна потеря данных
+A:\ProjectC\Simon\Simon\Simon.cpp(45,52): error C2036: void *: неизвестный размер
+A:\ProjectC\Simon\Simon\Simon.cpp(85,75): error C2664: "void Simon_Encrypt_32(uint8_t *,uint8_t *,uint8_t *)": невозможно преобразовать аргумент 2 из "void *" в "uint8_t *"
+A:\ProjectC\Simon\Simon\Simon.cpp(85,54): message : Для преобразования "void*" к указателю на тип, не являющемуся "void", требуется явное приведение
+A:\ProjectC\Simon\Simon\Simon.h(45,6): message : см. объявление "Simon_Encrypt_32"
+A:\ProjectC\Simon\Simon\Simon.cpp(89,102): error C2664: "void Simon_Encrypt_48(uint8_t,uint8_t *,uint8_t *,uint8_t *)": невозможно преобразовать аргумент 3 из "void *" в "uint8_t *"
+A:\ProjectC\Simon\Simon\Simon.cpp(89,81): message : Для преобразования "void*" к указателю на тип, не являющемуся "void", требуется явное приведение
+A:\ProjectC\Simon\Simon\Simon.h(46,6): message : см. объявление "Simon_Encrypt_48"
+A:\ProjectC\Simon\Simon\Simon.cpp(93,102): error C2664: "void Simon_Encrypt_64(uint8_t,uint8_t *,uint8_t *,uint8_t *)": невозможно преобразовать аргумент 3 из "void *" в "uint8_t *"
+A:\ProjectC\Simon\Simon\Simon.cpp(93,81): message : Для преобразования "void*" к указателю на тип, не являющемуся "void", требуется явное приведение
+A:\ProjectC\Simon\Simon\Simon.h(47,6): message : см. объявление "Simon_Encrypt_64"
+A:\ProjectC\Simon\Simon\Simon.cpp(97,102): error C2664: "void Simon_Encrypt_96(uint8_t,uint8_t *,uint8_t *,uint8_t *)": невозможно преобразовать аргумент 3 из "void *" в "uint8_t *"
+A:\ProjectC\Simon\Simon\Simon.cpp(97,81): message : Для преобразования "void*" к указателю на тип, не являющемуся "void", требуется явное приведение
+A:\ProjectC\Simon\Simon\Simon.h(48,6): message : см. объявление "Simon_Encrypt_96"
+A:\ProjectC\Simon\Simon\Simon.cpp(101,103): error C2664: "void Simon_Encrypt_128(uint8_t,uint8_t *,uint8_t *,uint8_t *)": невозможно преобразовать аргумент 3 из "void *" в "uint8_t *"
+A:\ProjectC\Simon\Simon\Simon.cpp(101,82): message : Для преобразования "void*" к указателю на тип, не являющемуся "void", требуется явное приведение
+A:\ProjectC\Simon\Simon\Simon.h(49,6): message : см. объявление "Simon_Encrypt_128"
+A:\ProjectC\Simon\Simon\Simon.cpp(245,75): error C2664: "void Simon_Decrypt_32(uint8_t *,uint8_t *,uint8_t *)": невозможно преобразовать аргумент 2 из "void *" в "uint8_t *"
+A:\ProjectC\Simon\Simon\Simon.cpp(245,54): message : Для преобразования "void*" к указателю на тип, не являющемуся "void", требуется явное приведение
+A:\ProjectC\Simon\Simon\Simon.h(52,6): message : см. объявление "Simon_Decrypt_32"
+A:\ProjectC\Simon\Simon\Simon.cpp(249,102): error C2664: "void Simon_Decrypt_48(uint8_t,uint8_t *,uint8_t *,uint8_t *)": невозможно преобразовать аргумент 3 из "void *" в "uint8_t *"
+A:\ProjectC\Simon\Simon\Simon.cpp(249,81): message : Для преобразования "void*" к указателю на тип, не являющемуся "void", требуется явное приведение
+A:\ProjectC\Simon\Simon\Simon.h(53,6): message : см. объявление "Simon_Decrypt_48"
+A:\ProjectC\Simon\Simon\Simon.cpp(253,102): error C2664: "void Simon_Decrypt_64(uint8_t,uint8_t *,uint8_t *,uint8_t *)": невозможно преобразовать аргумент 3 из "void *" в "uint8_t *"
+A:\ProjectC\Simon\Simon\Simon.cpp(253,81): message : Для преобразования "void*" к указателю на тип, не являющемуся "void", требуется явное приведение
+A:\ProjectC\Simon\Simon\Simon.h(54,6): message : см. объявление "Simon_Decrypt_64"
+A:\ProjectC\Simon\Simon\Simon.cpp(257,102): error C2664: "void Simon_Decrypt_96(uint8_t,uint8_t *,uint8_t *,uint8_t *)": невозможно преобразовать аргумент 3 из "void *" в "uint8_t *"
+A:\ProjectC\Simon\Simon\Simon.cpp(257,81): message : Для преобразования "void*" к указателю на тип, не являющемуся "void", требуется явное приведение
+A:\ProjectC\Simon\Simon\Simon.h(55,6): message : см. объявление "Simon_Decrypt_96"
+A:\ProjectC\Simon\Simon\Simon.cpp(261,103): error C2664: "void Simon_Decrypt_128(uint8_t,uint8_t *,uint8_t *,uint8_t *)": невозможно преобразовать аргумент 3 из "void *" в "uint8_t *"
+A:\ProjectC\Simon\Simon\Simon.cpp(261,82): message : Для преобразования "void*" к указателю на тип, не являющемуся "void", требуется явное приведение
+A:\ProjectC\Simon\Simon\Simon.h(56,6): message : см. объявление "Simon_Decrypt_128"
+  Создание кода...

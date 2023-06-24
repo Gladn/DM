@@ -1,0 +1,6 @@
+﻿  Main.cpp
+A:\ProjectC\Simon\Simon\Main.cpp(77,33): warning C4244: аргумент: преобразование "ULONGLONG" в "unsigned int", возможна потеря данных
+  Simon.cpp
+A:\ProjectC\Simon\Simon\Simon.cpp(33,51): warning C4244: =: преобразование "const uint16_t" в "uint8_t", возможна потеря данных
+  Создание кода...
+  Simon.vcxproj -> A:\ProjectC\Simon\Debug\Simon.exe
