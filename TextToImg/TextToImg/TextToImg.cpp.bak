@@ -1,0 +1,186 @@
+﻿#define _CRT_SECURE_NO_WARNINGS
+#include <string>;
+#include <Windows.h>
+#include <tchar.h>
+#include <time.h>
+#include <iostream>
+#include <gdiplus.h>
+using namespace std;
+using namespace Gdiplus;
+#pragma comment (lib, "Gdiplus.lib")
+
+int GetEncoderClsid(const WCHAR* format, CLSID* pClsid)
+{
+	UINT num = 5; // number of image encoders
+	UINT size = 1; // size of the image encoder array in bytes
+	ImageCodecInfo* pImageCodecInfo = NULL;
+	GetImageEncodersSize(&num, &size);
+	if (size == 0)
+		return -1; // Failure
+	pImageCodecInfo = (ImageCodecInfo*)(malloc(size));
+	if (pImageCodecInfo == NULL)
+		return -1; // Failure
+	GetImageEncoders(num, size, pImageCodecInfo);
+	for (UINT j = 0; j < num; ++j)
+	{
+		if (wcscmp(pImageCodecInfo[j].MimeType, format) == 0)
+		{
+			*pClsid = pImageCodecInfo[j].Clsid;
+			free(pImageCodecInfo);
+			return j; // Success
+		}
+	}
+	free(pImageCodecInfo);
+	return -1; // Failure
+}
+
+VOID Example_SaveFile(const WCHAR* F, const WCHAR* T)
+{
+	GdiplusStartupInput gdiplusStartupInput;
+	ULONG_PTR gdiplusToken;
+	GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
+	CLSID encoderClsid;
+	Status stat;
+	Image* image = new Image(F);
+	// Get the CLSID of the PNG
+	//encoder.
+	GetEncoderClsid(L"image/jpeg", &encoderClsid);
+	stat = image->Save(T, &encoderClsid, NULL);
+	if (stat == Ok)
+		printf("img was saved successfully\n");
+	else
+		printf("Failure: stat = %d\n", stat);
+	delete image;
+	GdiplusShutdown(gdiplusToken);
+}
+
+
+
+
+
+int main()
+{
+    int cw = 100;
+    int ch = 100;
+    int arr[100 * 100] = { 0 };
+	int rs, gs, bs;
+    unsigned char Red, Green, Blue;
+    unsigned long rgb;
+
+	
+	//int rr = 16;
+	for (int rr = 10; rr <= 20; rr++) {
+		char FileName[256];
+		char FileNamefolder[100]; char FileNamefolder2[100]; char FileNamefolder3[100];
+		char FileNametrain[32];
+		char FileNametest[32];
+		char FileNameJpg[32];		
+		char label[] = "Magma";
+		char folder2[] = "Magma_";
+		char train[] = "train";
+		char test[] = "test";
+
+		sprintf(FileNamefolder, "%s%i%s%s", folder2, rr, "rb", "\\");
+		sprintf(FileNametrain, "%s%i%s%s%s%s", folder2, rr, "rb", "\\", train, "\\");
+		sprintf(FileNamefolder2, "%s%i%s\\%s\\%s%i%s", folder2, rr, "rb", train, folder2, rr, "rb");
+		sprintf(FileNametest, "%s%i%s%s%s%s", folder2, rr, "rb", "\\", test, "\\");
+		sprintf(FileNamefolder3, "%s%i%s\\%s\\%s%i%s", folder2, rr, "rb", test, folder2, rr, "rb");
+		printf(FileNamefolder);
+
+		sprintf_s(FileNameJpg, "%s%i%s", label, rr, "rb_");
+		printf(FileNameJpg); printf("\n");
+		for (int i = 1; i <= 2000; i++) {
+			FILE* File;
+			string fnm;
+			//fopen_s(&File, "ciphertext.txt", "rb");
+			sprintf(FileName, "%s%i%s\\%s%i%s%i%s", label, rr,"r", label, rr, "r_", i, ".txt");
+			fopen_s(&File, FileName, "rb");
+			if (CreateDirectory(FileNamefolder, NULL)) printf("Output directory created\n");
+			if (CreateDirectory(FileNametrain, NULL) && CreateDirectory(FileNamefolder2, NULL)) printf("Train directory created\n");
+			if (CreateDirectory(FileNametest, NULL) && CreateDirectory(FileNamefolder3, NULL)) printf("Test directory created\n");
+
+
+			for (int y = 0; y < ch; y++) {
+				for (int x = 0; x < cw; x++) {
+					//if (fgetc(File) == 'EOF') rewind(File);
+					bs = fgetc(File); gs = fgetc(File); rs = fgetc(File);
+					/*if (rs == EOF) {
+						fseek(File, 0L, SEEK_SET);
+						rs = fgetc(File);
+					}
+					if (gs == EOF) {
+						fseek(File, 0L, SEEK_SET);
+						gs = fgetc(File);
+					}
+					if (bs == EOF) {
+						fseek(File, 0L, SEEK_SET);
+						bs = fgetc(File);
+					}*/
+					Blue = bs;
+					Green = gs;
+					Red = rs;
+					arr[y * cw + x] = ((Blue & 0xFF)) | ((Green & 0xFF) << 8) | ((Red & 0xFF) << 16);
+				}
+			}
+			char OutputFile[256];
+			if (i <= 1800) 
+				sprintf_s(OutputFile, "%s_%i%s\\%s\\%s_%i%s\\%s%i%s", label, rr, "rb", train, label, rr, "rb", FileNameJpg, i, ".bmp");
+			else
+				sprintf_s(OutputFile, "%s_%i%s\\%s\\%s_%i%s\\%s%i%s", label, rr, "rb", test, label, rr, "rb", FileNameJpg, i, ".bmp");
+			
+			
+			DWORD p_row = ((cw * 32 + 31) & ~31) / 8uL;
+			DWORD size = (DWORD)(ch * p_row);
+
+			// Файловый заголовок BMP
+			BITMAPFILEHEADER bmHeader;
+			ZeroMemory(&bmHeader, sizeof(BITMAPFILEHEADER));
+			bmHeader.bfType = 0x4D42;
+			bmHeader.bfSize = bmHeader.bfOffBits + size;
+			bmHeader.bfOffBits = sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER);
+
+			BITMAPINFO dib;
+			ZeroMemory(&dib, sizeof(BITMAPINFO));
+			dib.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
+			dib.bmiHeader.biBitCount = 32;
+			dib.bmiHeader.biCompression = BI_RGB;
+			dib.bmiHeader.biPlanes = 1u;
+			dib.bmiHeader.biWidth = (long)cw;
+			dib.bmiHeader.biHeight = (long)-ch;
+			dib.bmiHeader.biSizeImage = size;
+			dib.bmiHeader.biXPelsPerMeter = 11811L;
+			dib.bmiHeader.biYPelsPerMeter = 11811L;
+			dib.bmiHeader.biClrImportant = 0uL;
+			dib.bmiHeader.biClrUsed = 0uL;
+
+			HANDLE fp = CreateFile(OutputFile, GENERIC_WRITE, FILE_SHARE_WRITE, NULL,
+				CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+			if (fp == INVALID_HANDLE_VALUE) {
+				return FALSE;
+				printf("ERROR\n");
+			}
+			DWORD dwr = 0uL;
+			WriteFile(fp, (LPCVOID)&bmHeader, sizeof(BITMAPFILEHEADER), &dwr, NULL);
+			WriteFile(fp, (LPCVOID)&dib.bmiHeader, sizeof(BITMAPINFOHEADER), &dwr, NULL);
+			WriteFile(fp, (LPCVOID)arr, size, &dwr, NULL);
+			cout << "-" << i << " ";  printf("img was saved successfully\n");
+			fclose(File);
+			FlushFileBuffers(fp);
+			CloseHandle(fp);
+			//
+			/*fnm = FileNameJpg;
+			fnm += to_string(i);
+			string F1 = fnm + ".bmp";
+			string F2 = FileNamefolder + fnm + ".jpeg";
+			wstring F11 = wstring(F1.begin(), F1.end());
+			wstring F21 = wstring(F2.begin(), F2.end());
+			const WCHAR* FNMBM = F11.c_str();
+			const WCHAR* FNMJPG = F21.c_str();
+			cout << "-" << i << " "; Example_SaveFile(FNMBM, FNMJPG);
+			if (remove(F1.c_str())) {
+				printf("Error removing file\n");
+			}*/
+		}
+	}//
+
+}
